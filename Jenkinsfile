@@ -30,7 +30,7 @@ stage('Trust') {
 
     if (!env.CHANGE_AUTHOR) {
         println "This doesn't look like a GitHub PR, continuing"
-    } else if (!isOrgMember(env.CHANGE_AUTHOR, 'fheng', 'githubjenkins')) {
+    } else if (!isOrgMember(env.CHANGE_AUTHOR, 'RedHatInsights', 'nacho-bot')) {
         input(
             message: "Trusted approval needed for change from ${env.CHANGE_AUTHOR}",
             submitter: 'authenticated'
@@ -48,11 +48,11 @@ def getTestComponentConfigs() {
     def componentConfigs = [:]
     def componentName = getTestComponentName()
     componentConfigs[componentName] = [:]
-    componentConfigs[componentName]['gitHubOrg'] = 'feedhenry'
-    componentConfigs[componentName]['repoName'] = 'fh-mbaas'
+    componentConfigs[componentName]['gitHubOrg'] = 'RedHatInsights'
+    componentConfigs[componentName]['repoName'] = 'RedHatInsights'
     componentConfigs[componentName]['baseBranch'] = 'master'
     componentConfigs[componentName]['repoDir'] = ''
-    componentConfigs[componentName]['cookbook'] = 'fh-mbaas'
+    componentConfigs[componentName]['cookbook'] = 'redhatinsights'
     componentConfigs[componentName]['buildType'] = 'node'
     componentConfigs[componentName]['distCmd'] = 'grunt fh:dist'
     componentConfigs[componentName]['buildJobName'] = "build_any_jenkinsfile"
