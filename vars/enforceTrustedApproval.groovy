@@ -34,7 +34,7 @@ final boolean isOrgMember(String user, String org, String gitHubCredentialsId) {
     }
 }
 
-def call(String trustedOrg='RedHatInsights', String gitHubCredentialsId='github-nachobot') {
+def call(String trustedOrg='RedHatInsights', String gitHubCredentialsId='nachobot') {
     if (!env.CHANGE_AUTHOR) {
         println "This doesn't look like a GitHub PR, continuing"
     } else if (!isOrgMember(env.CHANGE_AUTHOR, trustedOrg, gitHubCredentialsId)) {
